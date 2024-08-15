@@ -1,8 +1,4 @@
-//To better read each program exercise, I recommend commenting all other exercises out apart from the one that you would like to see function.
-//Look for the lines that have "//////////////" and replace it with "/*" and "*/" as needed.
-
-//////////////
-
+/*
 //! Personal Contact Book
 //? Create a simple contact book where you can add, view, and search for contacts by name.
  
@@ -117,10 +113,6 @@ function searchContact(contact)
     console.log("Contact not found.");
 }
 
-//////////////
-
-//////////////
-
 //! Student Grade Management
 //? Create a program to manage student grades, where you can calculate the average grade for the class and identify students who need to improve.
  
@@ -188,10 +180,6 @@ function belowAverageStudents(students, classAverage, belowAverage)
     console.log("Students that need to improve:");
     console.log(belowAverage);
 }
-
-//////////////
-
-//////////////
 
 //! Movie Collection Tracker
 //? Create a program that allows you to manage a collection of movies, including adding movies, rating them, and viewing your collection.
@@ -318,10 +306,6 @@ function viewCollection(movies)
         }
         return;
 }
- 
-//////////////
-
-//////////////
 
 //! Library Book Tracker
 //? Create a program to manage a small library, where you can check which books are available or borrowed, and filter the books by their status.
@@ -407,4 +391,292 @@ function borrowedSort(books, borrowedBooks)
     }
 }
 
-//////////////
+*/
+
+/*
+
+//! Recipe Organizer
+//? Create a program to manage recipes, where some recipes are predefined, and the user can add or update recipes.
+
+//TODO  Each recipe should have properties like title, ingredients (an array of strings), and instructions.
+let recipes = [
+    { title: "Pancakes", ingredients: ["Flour", "Eggs", "Milk"], instructions: "Mix and cook on a griddle." },
+    { title: "Salad", ingredients: ["Lettuce", "Tomatoes", "Cucumbers"], instructions: "Chop and toss with dressing." }
+  ];
+//TODO Add a New Recipe: Allow the user to input a new recipe's title, ingredients, and instructions, then add it to the list.
+//TODO Update Recipe Instructions: Enable the user to update the instructions of an existing recipe.
+//* Display All Recipes: Write a function to display all recipes with their details.
+
+let userInput;
+
+while (userInput != "4")
+{
+    userInput = prompt("1. Add Recipe\n2. Update Recipe\n3. Display Recipe List\n4. Exit\n");
+
+    switch (true)
+    {
+        //sorts the books by available status
+        case (userInput == 1):
+            addRecipe(recipes);
+            break;
+        //sorts the books by borrowed status
+        case (userInput == 2):
+            updateRecipe(recipes);
+            break;
+        //breaks out of the switch statement
+        case (userInput == 3):
+            displayRecipes(recipes);
+            break;
+        case (userInput == 4):
+            break;
+        default:
+            console.log("Invalid Input.");
+            break;
+    }
+}
+
+function addRecipe(recipes)
+{
+    let recipeTitle = prompt("What is the title of the recipe?");
+    let recipeIngredient = [];
+    let recipeInput;
+
+    do
+    {
+        recipeInput = prompt("Add each ingredient of the recipe. Press 2 when finished.");
+
+        if (recipeInput != "2")
+        {
+            recipeIngredient.push(recipeInput);
+        }
+    } while (recipeInput != "2");
+
+    let recipeInstructions = prompt("Please write out the instructions for the recipe.");
+
+    let newObject = 
+    {
+        title: recipeTitle,
+        ingredients: recipeIngredient,
+        instructions: recipeInstructions
+    };
+
+    recipes.push(newObject);
+
+    console.log("Update Recipes List:");
+
+    for (let i = 0; i < recipes.length; i++)
+    {
+        console.log(recipes[i]);
+    }
+}
+
+function updateRecipe(recipes)
+{
+    let updateInput = prompt("Please enter the title of the recipe you would like to update.");
+
+    for (let i = 0; i < recipes.length; i++)
+    {
+        if (updateInput === recipes[i].title)
+        {
+            let recipeInstructions = prompt(`Please update the instructions for ${recipes[i].title}.`);
+
+            recipes[i].instructions = recipeInstructions;
+            break;
+        }
+    }
+
+    console.log("Updated Recipe List:");
+
+    for (let i = 0; i < recipes.length; i++)
+    {
+        console.log(recipes[i]);
+    }
+}
+
+function displayRecipes(recipes)
+{
+    console.log("Recipe List:");
+
+    for (let i = 0; i < recipes.length; i++)
+    {
+        console.log(recipes[i]);
+    }
+}
+
+*/
+
+/*
+
+//! Car Dealership Inventory
+//? Create a program to manage a car dealership inventory, where some cars are predefined, and the user can add or update car details.
+let cars = [
+    { make: "Toyota", model: "Camry", year: 2020, price: 24000 },
+    { make: "Honda", model: "Civic", year: 2019, price: 22000 }
+  ];
+//TODO Each car should have properties like make, model, year, and price.
+//TODO Add a New Car: Allow the user to input a new car's make, model, year, and price, then add it to the inventory.
+//TODO Update Car Price: Enable the user to update the price of an existing car.
+//* Display All Cars: Write a function to display all cars in the inventory.
+
+let userInput;
+
+while (userInput != "4")
+{
+    userInput = prompt("1. Add Car\n2. Update Car Price\n3. Display All Cars\n4. Exit\n");
+
+    switch (true)
+    {
+        //sorts the books by available status
+        case (userInput == 1):
+            addCar(cars);
+            break;
+        //sorts the books by borrowed status
+        case (userInput == 2):
+            updateCarPrice(cars);
+            break;
+        //breaks out of the switch statement
+        case (userInput == 3):
+            displayCars(cars);
+            break;
+        case (userInput == 4):
+            break;
+        default:
+            console.log("Invalid Input.");
+            break;
+    }
+}
+    
+function addCar(cars)
+{
+    let carMake = prompt("What is the make of the car?");
+    let carModel = prompt("What is model of the car?");
+    let carYear = prompt("What is the year of the car?");
+    let carPrice = prompt("What is the price of the car?");
+
+    let newObject = 
+    {
+        make: carMake,
+        model: carModel,
+        year: Number(carYear),
+        price: Number(carPrice)
+    };
+
+    cars.push(newObject);
+
+    console.log("Updated Cars List:");
+
+    for (let i = 0; i < cars.length; i++)
+    {
+        console.log(cars[i]);
+    }
+}
+
+function updateCarPrice(cars)
+{
+    let updateInput = prompt("Please enter the model of the car you would like to update the price for.");
+
+    for (let i = 0; i < cars.length; i++)
+    {
+        if (updateInput === cars[i].model)
+        {
+            let carPrice = prompt(`Please update the price for the ${cars[i].make} ${cars[i].model}.`);
+            cars[i].price = Number(carPrice);
+            break;
+        }
+    }
+
+    console.log("Updated Cars List:");
+
+    for (let i = 0; i < cars.length; i++)
+    {
+        console.log(cars[i]);
+    }
+}
+
+function displayCars(cars)
+{
+    console.log("Cars List:");
+    
+    for (let i = 0; i < cars.length; i++)
+    {
+        console.log(cars[i]);
+    }
+}
+
+*/
+
+/*
+
+//! Pet Names with Details
+//TODO Create a program that manages a list of pet names, where each pet has a name, type (e.g., dog, cat), and age.
+
+let pets = 
+[
+    { name: "Scrappy", type: "Dog", age: 16},
+    { name: "Sandy", type: "Dog", age: 18},
+    { name: "Felina", type: "Cat", age: 17},
+];
+
+//TODOEach object should contain name, type, and age.
+//TODO  Add a New Pet: Allow the user to input a new pet's name, type, and age, then add it to the list.
+//* Display All Pet Names: Write a function to display all pets with their details.
+
+let userInput;
+
+while (userInput != "3")
+{
+    userInput = prompt("1. Add Pet\n2. Display All Pets\n3. Exit\n");
+
+    switch (true)
+    {
+        //sorts the books by available status
+        case (userInput == 1):
+            addPet(pets);
+            break;
+        //sorts the books by borrowed status
+        case (userInput == 2):
+            displayPets(pets);
+            break;
+        //breaks out of the switch statement
+        case (userInput == 3):
+            break;
+        default:
+            console.log("Invalid Input.");
+            break;
+    }
+
+    function addPet(pets)
+    {
+        let petName = prompt("What is the pet's name?");
+        let petType = prompt("What type animal is the pet?");
+        let petAge = prompt("What is the pet's age?");
+
+        let newObject = 
+        {
+            name: petName,
+            type: petType,
+            age: Number(petAge),
+        };
+
+        pets.push(newObject);
+
+        console.log("Update Pet List:");
+
+        for (let i = 0; i < pets.length; i++)
+        {
+            console.log(pets[i]);
+        }
+    }
+
+    function displayPets(pets)
+    {
+        console.log("Pet List:");
+
+        for (let i = 0; i < pets.length; i++)
+        {
+            console.log(pets[i]);
+        }
+    }
+}
+
+*/
